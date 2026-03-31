@@ -1,0 +1,57 @@
+{
+  "title": "📡 グローバルチャット利用規約",
+  "description": "異なるサーバー間でメッセージを共有できるグローバルチャット機能です。以下のルールを守ってご利用ください。",
+  "rules": [
+    {
+      "number": 1,
+      "title": "基本マナー",
+      "content": "他のサーバーのメンバーとも交流することを考え、礼儀正しくコミュニケーションを取りましょう。"
+    },
+    {
+      "number": 2,
+      "title": "禁止行為",
+      "content": "連投荒らし、犯罪行為、個人情報の公開、広告・宣伝行為は禁止です。"
+    },
+    {
+      "number": 3,
+      "title": "メッセージ制限",
+      "content": "1つのメッセージは2000文字以内とし、連続投稿は控えめにお願いします。"
+    },
+    {
+      "number": 4,
+      "title": "ファイル投稿",
+      "content": "画像・動画・音声ファイルの投稿が可能ですが、10MB以下かつ過激なものは禁止です。"
+    },
+    {
+      "number": 5,
+      "title": "サーバー責任",
+      "content": "各サーバーの管理者は、自サーバーメンバーの行動に責任を持ち、問題があれば適切に対処してください。"
+    },
+    {
+      "number": 6,
+      "title": "違反対応",
+      "content": "ルール違反など不適切行為が確認された場合、警告なしにグローバルチャットから除名される場合があります。"
+    }
+  ],
+    "requirements": {    "title": "🔐 参加条件",    "conditions": [      "どなたでも参加可能（メンバー数制限なし）"      ]  },
+  "commands": {
+    "title": "🤖 関連コマンド",
+    "list": [
+      {
+        "command": "/globalchat",
+        "description": "グローバルチャットに参加（チャンネル指定必須）"
+      },
+      {
+        "command": "/globalchrule",
+        "description": "このルールと参加条件を表示"
+      }
+    ]
+  },
+  "contact": {
+    "title": "📞 お問い合わせ",
+    "description": "グローバルチャットに関する問題やご質問は、以下までお問い合わせください。",
+    "supportServer": "https://discord.com/invite/EucxfhpSk8",
+    "supportServerName": "ヒカマーニチ鯖",
+    "developer": "@maebahesioru2"
+  }
+} 

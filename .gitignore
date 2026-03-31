@@ -1,0 +1,29 @@
+# SpecStory explanation file
+.specstory/.what-is-this.md
+
+# Dependencies
+node_modules/
+
+# Secrets — 必ずローカルで作成（リポジトリに含めない）
+.env
+.env.local
+.env.*.local
+
+# 大きな素材（クローン後に各自で配置）
+material/**/*.mp4
+video/**/*.mp4
+
+# ランタイム生成・一時ファイル
+audio/
+temp/
+
+# Cursor
+.cursorindexingignore
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS
+.DS_Store
+Thumbs.db

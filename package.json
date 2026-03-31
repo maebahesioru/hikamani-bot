@@ -1,0 +1,35 @@
+{
+  "name": "material-bot",
+  "version": "1.0.0",
+  "description": "Discord bot for sharing random mp4 files from material folders with TikTok TTS voice support, video editing, and automatic image composition",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "node index.js"
+  },
+  "keywords": [
+    "discord",
+    "bot",
+    "hikakin",
+    "material",
+    "tiktok-tts",
+    "voice",
+    "tts",
+    "video-editing",
+    "ffmpeg",
+    "image-composition",
+    "pillow"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@discordjs/voice": "^0.16.1",
+    "axios": "^1.6.7",
+    "discord.js": "^14.14.1",
+    "dotenv": "^16.3.1",
+    "ffmpeg-static": "^5.2.0",
+    "fluent-ffmpeg": "^2.1.2",
+    "tiktok-tts": "^1.1.17",
+    "tweetnacl": "^1.0.3"
+  }
+}

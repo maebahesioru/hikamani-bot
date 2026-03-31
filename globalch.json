@@ -1,0 +1,26 @@
+{
+  "joinedServers": {},
+  "bannedServers": {},
+  "settings": {
+    "minMembers": 0,
+    "minUsers": 0,
+    "maxMessageLength": 2000,
+    "allowedFileTypes": [
+      "image/jpeg",
+      "image/png",
+      "image/gif",
+      "image/webp",
+      "video/mp4",
+      "video/webm",
+      "audio/mp3",
+      "audio/wav",
+      "audio/ogg"
+    ],
+    "maxFileSize": 25000000
+  },
+  "statistics": {
+    "totalServers": 0,
+    "totalMessages": 0,
+    "createdAt": ""
+  }
+}

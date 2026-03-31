@@ -1,0 +1,334 @@
+{
+    "botInfo": {    "name": "ヒカマニbot",    "description": "ヒカマニの素材動画を送信し、ヒカキンボイスで読み上げ、自動動画編集もできる多機能ボット",    "version": "β版",    "features": [      "🎬 ランダム素材動画送信",      "🎤 ヒカキンボイス読み上げ",      "🎞️ 自動動画編集（〇〇したいジェネレーター）",      "🤖 自動素材送信機能",      "📡 グローバルチャット機能",      "🎨 自動画像作成機能"    ]  },
+  "commands": {
+    "material": {
+      "name": "/material",
+      "description": "materialフォルダからランダムなmp4ファイルを送信します",
+      "usage": "/material [folder] [search]",
+      "options": [
+        {
+          "name": "folder",
+          "description": "検索するフォルダ（all/hikakin/hajime/masuo/seikin）",
+          "required": false,
+          "default": "all"
+        },
+        {
+          "name": "search",
+          "description": "ファイル名で検索（部分一致・完全一致両方対応）",
+          "required": false
+        }
+      ],
+      "examples": [
+        "/material",
+        "/material folder:hikakin",
+        "/material search:面白い",
+        "/material folder:hajime search:ゲーム"
+      ]
+    },
+    "join": {
+      "name": "/join",
+      "description": "ボイスチャンネルに参加して読み上げを開始します",
+      "usage": "/join",
+      "features": [
+        "ヒカキンボイスでメッセージ読み上げ",
+        "入退室アナウンス",
+        "URL自動省略機能",
+        "100文字制限"
+      ],
+      "examples": ["/join"]
+    },
+    "leave": {
+      "name": "/leave",
+      "description": "ボイスチャンネルから退出します",
+      "usage": "/leave",
+      "examples": ["/leave"]
+    },
+    "hikakinvoicemp3": {
+      "name": "/hikakinvoicemp3",
+      "description": "VCに入らずにヒカキンボイスでテキストを読み上げ、mp3ファイルとして送信します",
+      "usage": "/hikakinvoicemp3 text:<テキスト>",
+      "features": [
+        "VC接続不要",
+        "ヒカキンボイス音声生成",
+        "MP3ファイルとして送信",
+        "URL自動省略機能",
+        "100文字制限"
+      ],
+      "options": [
+        {
+          "name": "text",
+          "description": "読み上げるテキスト（100文字以内）",
+          "required": true,
+          "maxLength": 100
+        }
+      ],
+      "limitations": [
+        "文字数制限: 100文字以内",
+        "TikTok TTS設定が必要",
+        "日本語・英数字のみ対応"
+      ],
+      "examples": [
+        "/hikakinvoicemp3 text:こんにちは、ヒカキンです！",
+        "/hikakinvoicemp3 text:今日も元気にやっていこう！"
+      ]
+    },
+    "joinsub": {
+      "name": "/joinsub",
+      "description": "ボイスチャンネルに参加して複数チャンネルの読み上げを開始します",
+      "usage": "/joinsub channel:<チャンネル>",
+      "features": [
+        "複数チャンネル同時読み上げ",
+        "ヒカキンボイス音声生成",
+        "半角カタカナ→全角カタカナ変換",
+        "メディア検出（画像・動画・音声）",
+        "絵文字・スタンプ読み上げ",
+        "入退室アナウンス"
+      ],
+      "options": [
+        {
+          "name": "channel",
+          "description": "読み上げ対象のテキストチャンネル",
+          "required": true
+        }
+      ],
+      "examples": [
+        "/joinsub channel:#一般",
+        "/joinsub channel:#雑談"
+      ]
+    },
+    "leavesub": {
+      "name": "/leavesub",
+      "description": "指定したチャンネルの読み上げを停止します",
+      "usage": "/leavesub channel:<チャンネル>",
+      "features": [
+        "個別チャンネル読み上げ停止",
+        "全チャンネル停止時は自動退出"
+      ],
+      "options": [
+        {
+          "name": "channel",
+          "description": "読み上げ停止対象のテキストチャンネル",
+          "required": true
+        }
+      ],
+      "examples": [
+        "/leavesub channel:#一般",
+        "/leavesub channel:#雑談"
+      ]
+    },
+    "vcbotinvite": {
+      "name": "/vcbotinvite",
+      "description": "特定のボットのメッセージを読み上げ対象に追加します",
+      "usage": "/vcbotinvite bot:<ボット>",
+      "features": [
+        "ボットメッセージの読み上げ機能",
+        "サーバーごとの個別管理",
+        "自動入退室アナウンス除外"
+      ],
+      "options": [
+        {
+          "name": "bot",
+          "description": "読み上げ対象に追加するボット",
+          "required": true
+        }
+      ],
+      "limitations": [
+        "ボットのみ選択可能",
+        "自分自身は追加不可",
+        "100文字制限が適用"
+      ],
+      "examples": [
+        "/vcbotinvite bot:@ChatGPT",
+        "/vcbotinvite bot:@翻訳bot"
+      ]
+    },
+    "vcbotreave": {
+      "name": "/vcbotreave",
+      "description": "特定のボットのメッセージを読み上げ対象から削除します",
+      "usage": "/vcbotreave bot:<ボット>",
+      "features": [
+        "ボット読み上げの個別停止",
+        "サーバーごとの個別管理"
+      ],
+      "options": [
+        {
+          "name": "bot",
+          "description": "読み上げ対象から削除するボット",
+          "required": true
+        }
+      ],
+      "examples": [
+        "/vcbotreave bot:@ChatGPT",
+        "/vcbotreave bot:@翻訳bot"
+      ]
+    },
+    "vcbotlist": {
+      "name": "/vcbotlist",
+      "description": "現在読み上げ対象に登録されているボット一覧を表示します",
+      "usage": "/vcbotlist",
+      "features": [
+        "登録済みボット一覧表示",
+        "サーバーごとの個別管理",
+        "ボット情報の確認"
+      ],
+      "examples": [
+        "/vcbotlist"
+      ]
+    },
+    "sitai": {
+      "name": "/sitai",
+      "description": "自動動画編集（素材→固定動画のパターンで結合）",
+      "usage": "/sitai 素材:<mp4ファイル> 名前:<mp4ファイル>",
+      "pattern": "1.mp4 → 素材 → 2.mp4 → 素材 → 3.mp4 → 素材 → 4.mp4 → 素材 → 5.mp4 → 素材 → 6.mp4 → 名前 → 7.mp4",
+      "options": [
+        {
+          "name": "素材",
+          "description": "使用する素材mp4ファイル",
+          "required": true
+        },
+        {
+          "name": "名前",
+          "description": "名前として使用するmp4ファイル",
+          "required": true
+        }
+      ],
+      "limitations": [
+        "ファイルサイズ: 25MB以下",
+        "形式: mp4のみ",
+        "最大同時実行: 3件",
+        "出力: 10MB以下（自動圧縮）"
+      ],
+      "examples": ["/sitai 素材:my_video.mp4 名前:name_video.mp4"]
+    },
+    "mudantensai": {
+      "name": "/mudantensai",
+      "description": "自動画像作成機能 - アップロードした画像を合成してオリジナル画像を作成します",
+      "usage": "/mudantensai image:<画像ファイル>",
+      "features": [
+        "4つのレイヤーを自動合成",
+        "アスペクト比維持リサイズ",
+        "中央配置で最適化",
+        "PNG出力で高品質"
+      ],
+      "layers": [
+        "レイヤー1（最背面）: ue.png",
+        "レイヤー2: sita.png", 
+        "レイヤー3: ユーザーアップロード画像",
+        "レイヤー4（最前面）: ueninokkeru.png"
+      ],
+      "options": [
+        {
+          "name": "image",
+          "description": "合成に使用する画像ファイル（PNG/JPG/JPEG、10MB以下）",
+          "required": true
+        }
+      ],
+      "limitations": [
+        "ファイルサイズ: 10MB以下",
+        "対応形式: PNG, JPG, JPEG",
+        "出力形式: PNG",
+        "Python Pillow使用"
+      ],
+      "examples": [
+        "/mudantensai image:my_photo.png",
+        "/mudantensai image:selfie.jpg"
+      ]
+    },
+    "automaterial": {
+      "name": "/automaterial",
+      "description": "自動素材送信の設定を管理します（管理者のみ）",
+      "permission": "管理者権限が必要",
+      "subcommands": [
+        {
+          "name": "probability",
+          "description": "ボットが反応する確率を変更（0-100%）",
+          "usage": "/automaterial probability probability:<0-100>",
+          "examples": ["/automaterial probability probability:50"]
+        },
+        {
+          "name": "channel_ignore",
+          "description": "チャンネルの無視設定を管理",
+          "usage": "/automaterial channel_ignore action:<add/remove> channel:<チャンネル>",
+          "examples": ["/automaterial channel_ignore add channel:#一般"]
+        },
+        {
+          "name": "category_ignore",
+          "description": "カテゴリーの無視設定を管理",
+          "usage": "/automaterial category_ignore action:<add/remove> category:<カテゴリ>",
+          "examples": ["/automaterial category_ignore add category:雑談カテゴリ"]
+        },
+        {
+          "name": "whitelist_toggle",
+          "description": "ホワイトリストモードの切り替え",
+          "usage": "/automaterial whitelist_toggle is_toggled:<true/false>",
+          "examples": ["/automaterial whitelist_toggle is_toggled:true"]
+        },
+        {
+          "name": "status",
+          "description": "現在の自動素材送信設定を表示",
+          "usage": "/automaterial status",
+          "examples": ["/automaterial status"]
+        }
+      ]
+    },
+    "help": {      "name": "/help",      "description": "ボットのヘルプと使い方を表示します",      "usage": "/help",      "examples": ["/help"]    },
+    "utc": {
+      "name": "/utc",
+      "description": "UTC-12からUTC+14までの世界の現在時刻を表示します",
+      "usage": "/utc",
+      "features": [
+        "世界27タイムゾーンの時刻表示",
+        "地域名と国旗絵文字付き",
+        "見やすい3グループ表示",
+        "日本時間強調表示",
+        "リアルタイム時刻更新"
+      ],
+      "timezone_coverage": [
+        "UTC-12（ベーカー島）",
+        "UTC-11（ハワイ・アリューシャン）",
+        "UTC-10（ハワイ）",
+        "UTC-9（アラスカ）",
+        "UTC-8（太平洋標準時）",
+        "UTC-7（山岳標準時）",
+        "UTC-6（中部標準時）",
+        "UTC-5（東部標準時）",
+        "UTC-4（大西洋標準時）",
+        "UTC-3（ブラジル）",
+        "UTC-2（中部大西洋）",
+        "UTC-1（カーボベルデ）",
+        "UTC+0（グリニッジ標準時）",
+        "UTC+1（中央ヨーロッパ）",
+        "UTC+2（東ヨーロッパ）",
+        "UTC+3（モスクワ）",
+        "UTC+4（湾岸標準時）",
+        "UTC+5（パキスタン）",
+        "UTC+6（バングラデシュ）",
+        "UTC+7（インドシナ）",
+        "UTC+8（中国標準時）",
+        "UTC+9（日本標準時）",
+        "UTC+10（東オーストラリア）",
+        "UTC+11（ソロモン諸島）",
+        "UTC+12（フィジー）",
+        "UTC+13（トンガ）",
+        "UTC+14（キリバス）"
+      ],
+      "display_groups": [
+        "🌅 西半球・大西洋（UTC-12～UTC-4）",
+        "🌍 ヨーロッパ・アフリカ・中東（UTC-3～UTC+5）",
+        "🌏 アジア・太平洋（UTC+6～UTC+14）"
+      ],
+      "examples": ["/utc"]
+    },
+    "globalchat": {      "name": "/globalchat",      "description": "グローバルチャット機能を管理します（管理者のみ）",      "usage": "/globalchat channel:<チャンネル>",      "permission": "管理者権限が必要",      "features": [        "異なるサーバー間でメッセージ共有",        "画像・動画・音声・絵文字対応",        "25MB以下のファイル転送",        "参加条件なし（どなたでも参加可能）"      ],      "options": [        {          "name": "channel",          "description": "グローバルチャットに使用するチャンネル",          "required": true        }      ],      "examples": ["/globalchat channel:#グローバルチャット"]    },
+    "globalchrule": {      "name": "/globalchrule",      "description": "グローバルチャットの利用規約と参加条件を表示します",      "usage": "/globalchrule",      "features": [        "利用規約の確認",        "参加条件の確認",        "現在のサーバー状況表示",        "グローバルチャット統計情報"      ],      "examples": ["/globalchrule"]    }
+  },
+  "developer": {
+    "name": "十字架",
+    "twitter": "https://x.com/maebahesioru2",
+    "twitterName": "@maebahesioru2",
+    "supportServer": "https://discord.com/invite/EucxfhpSk8",
+    "supportServerName": "ヒカマーニチ鯖",
+    "contact": "お問い合わせやバグ報告は上記のDiscordサーバーまたはTwitterにお願いします"
+  },
+    "statistics": {    "totalMaterials": 360,    "supportedVoices": ["ヒカキンボイス（jp_male_hikakin）"],    "maxFileSize": "10MB",    "maxConcurrentSitai": 3,    "globalChatMaxFileSize": "25MB",    "globalChatMaxMessageLength": 2000  }
+} 
